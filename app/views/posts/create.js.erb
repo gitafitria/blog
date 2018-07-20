@@ -1,0 +1,8 @@
+$("form").find(".error-message").remove();
+<% if @post.errors.any? %>
+  <% @post.errors.each do |field, message| %>
+    var error_field = "<div class='error-message alert alert-danger alert-small'><%= message %></div>"
+
+    $("form").find("#post_<%= field %>").after(error_field);
+  <% end %>
+<% end %>

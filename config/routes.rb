@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :users
   root to: "welcome#index"
 
+  # Custom routes/path/url
   get 'hayooo', to: "welcome#index"
   get 'welcome/test'
 

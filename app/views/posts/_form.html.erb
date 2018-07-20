@@ -1,4 +1,4 @@
-<%= form_with(model: post, local: true) do |form| %>
+<%= form_with(model: post, local: true, html: {data: {remote: true}}) do |form| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -11,19 +11,31 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="row form-group">
+    <div class="col-md-3">
+      <%= form.label :title %>
+    </div>
+    <div class="col-md-6">
+      <%= form.text_field :title, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+  <div class="row form-group">
+    <div class="col-md-3">
+      <%= form.label :description %>
+    </div>
+    <div class="col-md-6">
+      <%= form.text_area :description, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.select :user_id, User.all.map{|u| [u.nama, u.id]} %>
+  <div class="row">
+    <div class="col-md-3">
+      <%= form.label :user_id %>
+    </div>
+    <div class="col-md-6">
+      <%= form.select :user_id, User.all.map{|u| [u.nama, u.id]} %>
+    </div>
   </div>
 
   <div class="field">
